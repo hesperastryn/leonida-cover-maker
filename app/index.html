@@ -3,20 +3,92 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Leonida Cover Maker — GTA-style poster covers from your photos</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
+  <section class="controls" aria-label="Cover editor controls">
+    <h1>Leonida <span>Cover Maker</span></h1>
+    <p class="tagline">Your photos, cut into a multi-panel Vice-City-style poster. Everything stays on your machine — photos are never uploaded.</p>
+
+    <div class="group">
+      <h2>1 · Photos</h2>
+      <label class="drop" id="dropZone">
+        <input id="photoInput" type="file" accept="image/*" multiple hidden>
+        <span>Drop photos here or click to browse</span>
+      </label>
+      <div class="row">
+        <button id="sampleBtn" type="button" class="ghost">Load samples</button>
+        <label class="check"><input id="fillAll" type="checkbox"> One photo fills all panels</label>
+      </div>
+      <div id="thumbs" class="thumbs" aria-label="Loaded photos"></div>
+      <p class="hint">Click a panel on the cover to select it, then click a photo to fill it. Drag on the cover to pan, scroll to zoom.</p>
+    </div>
+
+    <div class="group">
+      <h2>2 · Layout &amp; panel</h2>
+      <div id="layoutBtns" class="seg" role="group" aria-label="Panel layout"></div>
+      <div class="row">
+        <span id="panelLabel" class="pill">Panel 1 selected</span>
+        <button id="clearPanel" type="button" class="ghost">Clear panel</button>
+      </div>
+      <label>Panel zoom <input id="zoom" type="range" min="1" max="3" step="0.01" value="1"></label>
+    </div>
+
+    <div class="group">
+      <h2>3 · Caption</h2>
+      <label>Title <input id="title" type="text" maxlength="26" value="Vice Nights"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="42" value="Leonida • Est. 2026"></label>
+      <div class="row">
+        <label>Title colour <input id="titleColor" type="color" value="#ffd23e"></label>
+        <label>Accent <input id="accentColor" type="color" value="#ff5da2"></label>
+      </div>
+      <div class="row">
+        <span>Caption position</span>
+        <div class="seg small" role="group" aria-label="Caption position">
+          <button id="posBottom" type="button" class="on">Bottom</button>
+          <button id="posTop" type="button">Top</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>4 · Grade &amp; effects</h2>
+      <div class="row">
+        <span>Colour grade</span>
+        <div class="seg small" role="group" aria-label="Colour grade">
+          <button data-grade="sunset" type="button" class="on">Sunset</button>
+          <button data-grade="neon" type="button">Neon</button>
+          <button data-grade="golden" type="button">Golden</button>
+        </div>
+      </div>
+      <label>Grade strength <input id="gradeAmt" type="range" min="0" max="1" step="0.01" value="0.9"></label>
+      <div class="row checks">
+        <label class="check"><input id="decorTgl" type="checkbox" checked> Palms, sun &amp; skyline</label>
+        <label class="check"><input id="grainTgl" type="checkbox" checked> Film grain</label>
+        <label class="check"><input id="vigTgl" type="checkbox" checked> Vignette</label>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>5 · Export PNG</h2>
+      <div class="row">
+        <span>Post size</span>
+        <div class="seg small" role="group" aria-label="Export size">
+          <button data-size="1080x1080" type="button" class="on">Square</button>
+          <button data-size="1080x1350" type="button">Portrait</button>
+          <button data-size="1920x1080" type="button">Wide</button>
+        </div>
+      </div>
+      <button id="exportBtn" type="button" class="export">Export PNG · 1080 × 1080</button>
+      <p id="status" role="status"></p>
+    </div>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+  <section class="stage">
+    <canvas id="cover" width="900" height="900" aria-label="Live cover preview — click a panel to select it, drag to pan, scroll to zoom"></canvas>
+    <p class="stage-hint">Live preview · the export renders this exact composition at full resolution</p>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>

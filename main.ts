@@ -19,6 +19,11 @@ import { buildDossier } from './vendor/makefun-app.ts';
 const here = fileURLToPath(new URL('.', import.meta.url));
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
+// Leonida Cover Maker hands in a multi-panel GTA-style cover app: app/ holds the static editor
+// (panel collage layouts, per-panel photo crop, Anton caption lettering, sunset/neon grades and
+// PNG export at 1080x1080, 1080x1350 and 1920x1080), and screenshots/ shows its exported covers.
+console.log('leonida-cover-maker: handing in app/ + screenshots/ for gta6-cover-art-01');
+
 mkdirSync(out, { recursive: true });
 cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
 mkdirSync(join(out, 'screenshots'), { recursive: true });

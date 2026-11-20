@@ -1,5 +1,1 @@
-[
-  { "name": "1-cover.jpg", "query": "?shot=cover&photo=pier&caption=Sunset%20Heist", "w": 1080, "h": 1080 },
-  { "name": "2-editor.jpg", "query": "?shot=editor&photo=boulevard&caption=Boulevard%20Queen", "w": 1280, "h": 720 },
-  { "name": "3-cover.jpg", "query": "?shot=cover&photo=boulevard&caption=Boulevard%20Queen", "w": 1080, "h": 1080 }
-]
+[{"h":1080,"name":"1-cover.jpg","out":[1280,720],"query":"?shot=cover&w=1920&h=1080&layout=hero&photos=pier,boulevard,neonbeach&title=Vice%20Nights&sub=Leonida%20Heat&grade=sunset","w":1920},{"h":800,"name":"2-editor.jpg","query":"?shot=editor&size=1080x1350&layout=hero&photos=pier,boulevard,neonbeach&title=Neon%20Boulevard&sub=After%20Dark%20in%20Leonida&grade=neon","w":1280},{"h":1350,"name":"3-cover.jpg","out":[1024,1280],"query":"?shot=cover&w=1080&h=1350&layout=diagonal&photos=boulevard,pier,neonbeach&title=Diagonal%20Drift&sub=Sunset%20Chase&grade=sunset&accent=%2300e5ff","w":1080},{"h":1080,"name":"4-cover.jpg","out":[1080,1080],"query":"?shot=cover&w=1080&h=1080&layout=mosaic&photos=neonbeach,pier,boulevard&title=Palm%20District&sub=Golden%20Hour%20Stories&grade=golden","w":1080}]
